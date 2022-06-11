@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:project/pages/restaurant.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class QRScanner extends StatefulWidget {
@@ -63,6 +65,7 @@ class _QRScannerState extends State<QRScanner> {
   );
 
   void onQRViewCreated(QRViewController controller){
+    controller.resumeCamera();
     setState(() => this.controller = controller);
 
     controller.scannedDataStream.listen((barcode) => setState(() => this.barcode = barcode));
@@ -82,7 +85,25 @@ class _QRScannerState extends State<QRScanner> {
     }
   }
 
-  Widget buildResult() => barcode!=null ? ElevatedButton(onPressed: (){}, child: Text("${barcode!.code}")) : Text("Error!");
+  Widget buildResult() {
+    if(barcode!=null){
+      var code = this.barcode!.code;
+      print(code);
+      var ans = json.decode(code!.toString());
+
+      print(json.decode(ans?["akit"]));
+      return ElevatedButton(
+        onPressed: (){
+          print("Entering Restaurant");
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => RestaurantPage(restaurantName: ans["name"], restaurantTable: ans["table"],)));
+        }, 
+        child: Text("${barcode!.code}")
+      );
+    }
+    else{
+      return Text("Error!");
+    }
+  }
 
 }
 
