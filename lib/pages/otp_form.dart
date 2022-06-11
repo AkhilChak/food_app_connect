@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project/pages/home.dart';
+import '../services.dart';
 import '../utils.dart';
 
 class OtpForm extends StatefulWidget {
@@ -114,9 +116,16 @@ class _OtpFormState extends State<OtpForm> {
           ),
           SizedBox(height: SizeConfig.screenHeight * 0.15),
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async{
               var num = num1.text+num2.text+num3.text+num4.text;
               print(num);
+              var isLoggedIn = await Network().login(num);
+              if(isLoggedIn){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (BuildContext context) => MyHomePage()),
+                );
+              }
             },
             child: const Text("Continue"),
             style: ElevatedButton.styleFrom(
