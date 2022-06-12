@@ -87,17 +87,19 @@ class _QRScannerState extends State<QRScanner> {
 
   Widget buildResult() {
     if(barcode!=null){
-      var code = this.barcode!.code;
-      print(code);
-      var ans = json.decode(code!.toString());
-
-      print(json.decode(ans?["akit"]));
+      var code = barcode!.code;
+      // print(code);
+      var ans = json.decode(code!);
+      print(ans["name"]);
       return ElevatedButton(
         onPressed: (){
           print("Entering Restaurant");
           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => RestaurantPage(restaurantName: ans["name"], restaurantTable: ans["table"],)));
         }, 
-        child: Text("${barcode!.code}")
+        style: ElevatedButton.styleFrom(
+          primary: Color(0xff272343)
+        ),
+        child: Text("${ans["name"]}")
       );
     }
     else{

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ColorManager {
-  static Color appBarColor = Colors.yellow;
+  static Color appBarColor = Color(0xffBAE8E8);
+  static double defaultPadding = 10;
+  static Color kActiveColor = Colors.blue;
+  static Color kBodyTextColor= Colors.black;
 }
 
 class SizeConfig {

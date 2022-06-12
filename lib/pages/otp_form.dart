@@ -121,7 +121,7 @@ class _OtpFormState extends State<OtpForm> {
               print(num);
               var isLoggedIn = await Network().login(num);
               if(isLoggedIn){
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (BuildContext context) => MyHomePage()),
                 );
@@ -129,7 +129,7 @@ class _OtpFormState extends State<OtpForm> {
             },
             child: const Text("Continue"),
             style: ElevatedButton.styleFrom(
-                primary: Colors.green
+                primary: Color(0xff272343)
             ),
           )
         ],

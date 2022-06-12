@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
         centerTitle: true,
           elevation: 1,
           title: Text(
-              "Login to FoodConnect",
+              "Login to Hungry Pandas",
             style: GoogleFonts.lato(
               textStyle: const TextStyle(
                 color: Colors.black,
@@ -55,20 +55,16 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-                "Enter your phone number get started with your foodgasm",
-              style: GoogleFonts.lato(
-                textStyle: const TextStyle(
-                  color: Colors.grey,
-                  fontSize: 16,
-                ),
+            Center(
+              child: Image.asset(
+                "assets/images/applogo.jpg",
+                width: 150,
+                height: 150,
+                
               ),
             ),
             const SizedBox(
-              height: 100,
+              height: 20,
             ),
             TextField(
               controller: phoneNumber,
@@ -114,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: const Text("Get OTP"),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green
+                    primary: Color(0xff272343)
                   ),
                 ),
               ),

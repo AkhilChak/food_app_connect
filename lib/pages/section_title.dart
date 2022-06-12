@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils.dart';
+
 class SectionTitle extends StatelessWidget {
   const SectionTitle({
     Key? key,
@@ -21,7 +23,7 @@ class SectionTitle extends StatelessWidget {
         ),
         TextButton(
           onPressed: press, 
-          style: TextButton.styleFrom(primary: kActiveColor),
+          style: TextButton.styleFrom(primary: ColorManager.kActiveColor),
           child: Text('Sell All'))
       ],
     );
